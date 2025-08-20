@@ -1,0 +1,34 @@
+<template>
+  <v-app>
+    <top-bar @toggleDrawer="this.$refs.leftMenu.toggle()"/>
+    <left-menu ref="leftMenu"/>
+
+    <v-main>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
+</template>
+
+<script>
+import TopBar from "@/components/TopBar";
+import LeftMenu from "@/components/LeftMenu";
+
+export default {
+  components: {LeftMenu, TopBar},
+
+}
+</script>
+
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

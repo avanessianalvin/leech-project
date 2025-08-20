@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: leech
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=leech
+    driver-class-name: org.postgresql.Driver
+    username: leech
+    password: myjava123
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        default_schema: leech
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sian.leech.model.entity
