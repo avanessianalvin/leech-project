@@ -5,17 +5,9 @@ export const useGlobalStore = defineStore('global', {
             username: null
         }),
         getters: {
-            isLoggedIn: (state) => !!state.username
         },
         actions: {
-            login(username) {
-                this.username = username;
 
-            },
-            logout() {
-                this.username = null
-
-            }
         }
     }
 )

@@ -1,10 +1,14 @@
 <template>
 Home
+  <log-in/>
 </template>
 
 <script>
+import LogIn from "@/components/LogIn.vue";
+
 export default {
-  name: "HomeView"
+  name: "HomeView",
+  components: {LogIn}
 }
 </script>
 

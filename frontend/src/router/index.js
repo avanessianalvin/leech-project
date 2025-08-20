@@ -6,11 +6,11 @@ import ElementView from "@/views/ElementView";
 import ChainView from "@/views/ChainView";
 
 const routes = [
-    { path: '/', name: 'Home', component: HomeView },
-    { path: '/', name: 'Element', component: ElementView },
-    { path: '/', name: 'Chain', component: ChainView },
-    { path: '/about', name: 'About', component: AboutView },
-    { path: '/profile', name: 'Profile', component: ProfileView },
+    { path: '/', name: 'home', component: HomeView },
+    { path: '/element', name: 'element', component: ElementView },
+    { path: '/chain', name: 'chain', component: ChainView },
+    { path: '/about', name: 'about', component: AboutView },
+    { path: '/profile', name: 'profile', component: ProfileView },
 ]
 
 const router = createRouter({
