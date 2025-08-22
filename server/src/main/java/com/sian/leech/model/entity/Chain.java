@@ -18,7 +18,10 @@ public class Chain {
     @GeneratedValue(generator = "default_seq", strategy = GenerationType.AUTO)
     long id;
     String name;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<Element> elementList;
+
+    String direct;
+    String reverse;
     boolean enabled;
 }

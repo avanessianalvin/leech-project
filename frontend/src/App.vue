@@ -7,6 +7,7 @@
       <v-container fluid>
         <router-view></router-view>
       </v-container>
+      <notification-snack/>
     </v-main>
   </v-app>
 </template>
@@ -14,9 +15,10 @@
 <script>
 import TopBar from "@/components/TopBar";
 import LeftMenu from "@/components/LeftMenu";
+import NotificationSnack from "@/components/NotificationSnack.vue";
 
 export default {
-  components: {LeftMenu, TopBar},
+  components: {NotificationSnack, LeftMenu, TopBar},
 
 }
 </script>

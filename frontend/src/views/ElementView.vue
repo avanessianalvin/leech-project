@@ -1,13 +1,14 @@
 <template>
-Elelemts
-  <v-btn @click="getAll">getAll</v-btn>
+  <element-list/>
 </template>
 
 <script>
 import {useElementStore} from "@/stores/elements";
+import ElementList from "@/components/element/ElementList.vue";
 
 export default {
   name: "ElementView",
+  components: {ElementList},
   data(){
     return{
       elementStore:useElementStore()

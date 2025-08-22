@@ -1,10 +1,7 @@
 package com.sian.leech.model.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -18,6 +15,10 @@ public class Element {
     @Id
     @GeneratedValue(generator = "default_seq",strategy = GenerationType.AUTO)
     long id;
+    @Column(columnDefinition = "CHARACTER VARYING(8)")
     String name;
+    @Column(columnDefinition = "CHARACTER VARYING(8)")
     String opposite;
+    @Column(columnDefinition = "CHARACTER VARYING(32)")
+    String description;
 }
