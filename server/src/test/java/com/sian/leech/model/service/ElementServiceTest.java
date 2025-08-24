@@ -13,16 +13,16 @@ class ElementServiceTest {
 
     @Test
     void save() {
-        elementService.save(new Element().setName("AA").setOpposite("VV"));
+        elementService.save(new Element().setTitle("AA").setCode("VV"));
     }
 
     @Test
     void update(){
-        Element element = new Element().setName("11").setOpposite("22");
+        Element element = new Element().setTitle("11").setCode("22");
         elementService.save(element);
         System.out.println(element);
 
-        element.setName("33").setOpposite("44");
+        element.setTitle("33").setCode("44");
         elementService.save(element); //update
 
         System.out.println(element);

@@ -21,6 +21,7 @@
               :rules="[rules.required]"
               outlined
               dense
+              @keyup.enter="onLogin"
           />
         </v-form>
       </v-card-text>

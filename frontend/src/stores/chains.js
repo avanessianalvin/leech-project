@@ -3,59 +3,56 @@ import apiClient from "@/assets/plugins/apiClient";
 import {useNotificationStore} from "@/stores/notification";
 
 
-export const useElementStore = defineStore('element', {
+export const useChainStore = defineStore('chain', {
     state: () => ({
-        elementList: []
+        chainList: []
     }),
 
     getters: {
-        elementListSorted: (state) => {
-            return [...state.elementList].sort((a, b) => a.id - b.id);
-        },
-        elementListSortedCode:(state)=>{
-            return [...state.elementList].sort((a, b) => a.id - b.id).map(e=>e.code);
+        chainListSorted: (state) => {
+            return [...state.chainList].sort((a, b) => a.id - b.id);
         }
     },
 
     actions: {
         getAll() {
-            return apiClient.get("/element/getAll")
+            return apiClient.get("/chain/getAll")
                 .then(r => {
-                    this.elementList = r.data;
+                    this.chainList = r.data;
                     return r.data;
                 })
                 .catch(e => {
-                    console.error("Failed to fetch elements:", e);
+                    console.error("Failed to fetch chains:", e);
                     useNotificationStore().notify(e.message,'error')
                 });
         },
 
         save(o) {
-            return apiClient.post("/element/save", o)
+            return apiClient.post("/chain/save", o)
                 .then(r => {
                     const saved = r.data;
                     // Replace existing if same id, otherwise push
-                    const idx = this.elementList.findIndex(el => el.id === saved.id);
+                    const idx = this.chainList.findIndex(el => el.id === saved.id);
                     if (idx > -1) {
-                        this.elementList.splice(idx, 1, saved);
+                        this.chainList.splice(idx, 1, saved);
                     }else {
-                        this.elementList.push(saved)
+                        this.chainList.push(saved)
                     }
                     return saved;
                 })
                 .catch(e => {
-                    console.error("Failed to save element:", e);
+                    console.error("Failed to save chain:", e);
                     useNotificationStore().notify(e.message,'error')
                 });
         },
 
         remove(o) {
-            return apiClient.post('/element/remove',o)
+            return apiClient.post('/chain/remove',o)
                 .then(() => {
-                    this.elementList = this.elementList.filter(el => el.id !== o.id);
+                    this.chainList = this.chainList.filter(el => el.id !== o.id);
                 })
                 .catch(e => {
-                    console.error("Failed to delete element:", e);
+                    console.error("Failed to delete chain:", e);
                     useNotificationStore().notify(e.message,'error')
                 });
         }

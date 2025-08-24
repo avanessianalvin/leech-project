@@ -2,6 +2,7 @@ package com.sian.leech.model.service;
 
 import com.sian.leech.model.entity.Chain;
 import com.sian.leech.model.repository.ChainDA;
+import com.sian.leech.util.ChainUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ public class ChainService {
     private ChainDA chainDA;
 
     public void save(Chain chain){
+        ChainUtil.refreshChainSequence(chain);
         chainDA.save(chain);
     }
 

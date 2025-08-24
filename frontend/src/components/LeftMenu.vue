@@ -5,6 +5,9 @@
       <v-list-item :to="{ name: 'home' }">
         <v-list-item-title>Home</v-list-item-title>
       </v-list-item>
+      <v-list-item :to="{ name: 'dashboard' }">
+        <v-list-item-title>Dashboard</v-list-item-title>
+      </v-list-item>
       <v-list-item :to="{ name: 'element' }">
         <v-list-item-title>Element</v-list-item-title>
       </v-list-item>

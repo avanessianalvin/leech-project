@@ -1,17 +1,15 @@
 <template>
-  <chain-list/>
-
-  <element-element text="i am an element"/>
-
-p</template>
+  <chain-table />
+</template>
 
 <script>
-import ChainList from "@/components/ChainList.vue";
-import ElementElement from "@/components/element/ElementElement.vue";
 
+
+import ChainTable from "@/components/chain/ChainTable";
 export default {
   name: "ChainView",
-  components: {ElementElement, ChainList}
+  components: {ChainTable},
+
 }
 </script>
 

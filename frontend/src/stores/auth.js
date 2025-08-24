@@ -23,8 +23,8 @@ export const useAuthStore = defineStore('auth', {
                         this.user = res.data.user
                         useNotificationStore().notify("You are logged in.")
                     })
-                    .catch(() =>{
-                        useNotificationStore().notify("not correct username or password","error")
+                    .catch((e) =>{
+                        useNotificationStore().notify("not correct username or password" + e.message,"error")
                     })
 
             },

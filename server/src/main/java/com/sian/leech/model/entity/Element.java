@@ -11,14 +11,17 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Accessors(chain = true)
-public class Element {
+public class Element implements Cloneable{
     @Id
     @GeneratedValue(generator = "default_seq",strategy = GenerationType.AUTO)
     long id;
     @Column(columnDefinition = "CHARACTER VARYING(8)")
-    String name;
-    @Column(columnDefinition = "CHARACTER VARYING(8)")
-    String opposite;
+    String code;
     @Column(columnDefinition = "CHARACTER VARYING(32)")
-    String description;
+    String title;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

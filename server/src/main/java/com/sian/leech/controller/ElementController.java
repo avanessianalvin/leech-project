@@ -22,9 +22,14 @@ public class ElementController {
     }
 
     @PostMapping("/save")
-    public Element save(@RequestBody Element element){
-        elementService.save(element);
-        return element;
+    public ResponseEntity<?> save(@RequestBody Element element){
+        try {
+            elementService.save(element);
+            return ResponseEntity.ok(element);
+        }catch (Exception e){
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+
     }
 
     @PostMapping("/remove")

@@ -1,14 +1,14 @@
 <template>
-  <element-list/>
+  <element-table/>
 </template>
 
 <script>
 import {useElementStore} from "@/stores/elements";
-import ElementList from "@/components/element/ElementList.vue";
+import ElementTable from "@/components/element/ElementTable";
 
 export default {
   name: "ElementView",
-  components: {ElementList},
+  components: {ElementTable},
   data(){
     return{
       elementStore:useElementStore()
