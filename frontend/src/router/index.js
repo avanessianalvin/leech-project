@@ -5,12 +5,14 @@ import ProfileView from '../views/ProfileView.vue'
 import ElementView from "@/views/ElementView";
 import ChainView from "@/views/ChainView";
 import DashboardView from "@/views/DashboardView.vue";
+import TelegramView from "@/views/TelegramView";
 
 const routes = [
     { path: '/', name: 'home', component: HomeView },
     { path: '/dashboard', name: 'dashboard', component: DashboardView },
     { path: '/element', name: 'element', component: ElementView },
     { path: '/chain', name: 'chain', component: ChainView },
+    { path: '/telegram', name: 'telegram', component: TelegramView },
     { path: '/about', name: 'about', component: AboutView },
     { path: '/profile', name: 'profile', component: ProfileView },
 ]

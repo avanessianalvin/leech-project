@@ -38,4 +38,11 @@ public class ActiveChain {
     long startTime;
     long confirmTime;
 
+    @Column(columnDefinition = "CHARACTER VARYING(64)")
+    String tags;
+
+    @Column(columnDefinition = "CHARACTER VARYING(256)")
+    String message;
+
+
 }

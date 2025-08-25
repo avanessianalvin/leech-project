@@ -1,7 +1,5 @@
 <template>
-<v-card>
   <element-element v-for="item in elementList" :key="item" :element="item" :remove-button="removeButton" @remove="forwardEvent"/>
-</v-card>
 </template>
 
 <script>

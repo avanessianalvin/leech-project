@@ -1,20 +1,23 @@
 <template>
   <v-app-bar color="primary" dark>
-    <v-app-bar-nav-icon @click="$emit('toggleDrawer')"></v-app-bar-nav-icon>
-    <v-toolbar-title>My App</v-toolbar-title>
+    <v-app-bar-nav-icon @click="$emit('toggleDrawer')" v-if="authStore.isLoggedin"></v-app-bar-nav-icon>
+    <v-toolbar-title>Leech Feed Chain</v-toolbar-title>
     <v-spacer></v-spacer>
-
-    <NotificationMenu />
-    <ProfileMenu />
+    <ProfileMenu  v-if="authStore.isLoggedin"/>
   </v-app-bar>
 </template>
 
 <script>
 import ProfileMenu from './ProfileMenu.vue'
-import NotificationMenu from './NotificationMenu.vue'
+import {useAuthStore} from "@/stores/auth";
 
 export default {
-  components: { ProfileMenu, NotificationMenu },
+  components: { ProfileMenu },
+  data(){
+    return{
+      authStore:useAuthStore()
+    }
+  }
 
 }
 </script>

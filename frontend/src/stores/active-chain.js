@@ -66,7 +66,7 @@ export const useActiveChainStore = defineStore('activeChain', {
         remove(o) {
             return apiClient.post('/chain/active/remove',o)
                 .then(() => {
-                    this.getAll()
+                    this.reset()
                 })
                 .catch(e => {
                     console.error("Failed to delete chain:", e);

@@ -14,6 +14,9 @@
       <v-list-item :to="{ name: 'chain' }">
         <v-list-item-title>Chain</v-list-item-title>
       </v-list-item>
+      <v-list-item :to="{ name: 'telegram' }">
+        <v-list-item-title>Telegram</v-list-item-title>
+      </v-list-item>
       <v-list-item :to="{ name: 'about' }">
         <v-list-item-title>About</v-list-item-title>
       </v-list-item>

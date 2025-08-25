@@ -1,12 +1,15 @@
 <template>
-  <v-card>
-    <v-card-title>{{title}}</v-card-title>
+  <v-card class="mt-5 mb-5" color="blue-lighten-4">
+    <v-card-title>{{title}}
+      <v-btn class="me-2" prepend-icon="mdi-refresh" rounded="lg" text="Refrsh" border @click="$emit('reset')"></v-btn>
+    </v-card-title>
   <v-data-table :items="itemList"
                 :headers="tableHeaders"
                 :header-props="{style: {fontWeight:600}}"
                 :items-per-page="itemsPerPage"
                 :hide-default-footer="itemList.length<itemsPerPage"
-                density="compact">
+                density="compact"
+                class="zebra-table">
 
     <template v-slot:[`item.start`]="{ item }">
       {{moment(item.startTime).calendar()}}

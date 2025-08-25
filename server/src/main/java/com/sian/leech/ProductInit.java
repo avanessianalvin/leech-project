@@ -2,12 +2,14 @@ package com.sian.leech;
 
 import com.sian.leech.model.entity.Chain;
 import com.sian.leech.model.entity.Element;
+import com.sian.leech.model.entity.Telegram;
 import com.sian.leech.model.entity.User;
 import com.sian.leech.model.repository.ChainDA;
 import com.sian.leech.model.repository.ElementDA;
 import com.sian.leech.model.repository.UserDA;
 import com.sian.leech.model.service.ChainService;
 import com.sian.leech.model.service.ElementService;
+import com.sian.leech.model.service.TelegramService;
 import com.sian.leech.model.service.UserService;
 import com.sian.leech.util.ChainUtil;
 import org.checkerframework.checker.units.qual.C;
@@ -35,6 +37,9 @@ public class ProductInit implements ApplicationRunner {
     @Autowired
     ChainService chainService;
 
+    @Autowired
+    TelegramService telegramService;
+
     public void createUser(String username, String password) {
 
 
@@ -61,7 +66,8 @@ public class ProductInit implements ApplicationRunner {
                 .setSymbols(symbols)
                 .setElementList(Arrays.stream(elements).map(ChainUtil::fromElement).toList())
                 .setEnabled(true)
-
+                .setTelegramTags("EURUSD;XAUUSD")
+                .setMessage("message\n2n line\n\n3rd line")
                 .setDescription("description " + title);
         chainService.save(chain);
         return chain;
@@ -70,7 +76,7 @@ public class ProductInit implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("Creating user ");
-        createUser("alvin", "q1q1q1Q!");
+        createUser("user", "user");
 
         System.out.println("Creating some elements");
         Element cu15 = createElement("CU15", "Cross up 15 min");
@@ -79,8 +85,24 @@ public class ProductInit implements ApplicationRunner {
         Element sl15 = createElement("SL15", "Saturation low 15 min");
 
 
-        createChain("Buy","EURUSD,USDJPY",cu15,sh15,cu15);
+        createChain("Buy","EURUSD,XAUUSD",cu15,sh15,cu15);
         createChain("Buy","EURUSD",cd15,sl15);
+
+        telegramService.save(
+                new Telegram()
+                        .setTitle("Catch all")
+                        .setToken("8121406254:AAFA1SsOpagZmCdzInAZUz7iZFl8bDYN1kg")
+                        .setChatId("-1002957982628")
+                        .setTags("EURUSD;XAUUSD")
+                        .setEnabled(true));
+
+        telegramService.save(
+                new Telegram()
+                        .setTitle("Eurusd only")
+                        .setToken("8121406254:AAFA1SsOpagZmCdzInAZUz7iZFl8bDYN1kg")
+                        .setChatId("-1003033553502")
+                        .setTags("EURUSD")
+                        .setEnabled(true));
 
     }
 }

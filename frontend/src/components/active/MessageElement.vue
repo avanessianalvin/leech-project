@@ -6,7 +6,7 @@
       <v-card class="pa-2" outlined>
         <div v-for="(value, key) in messageElement" :key="key" class="d-flex">
           <strong>{{ key }}:</strong>
-          <span class="ml-1">{{ value }}</span>
+          <span class="ml-1">{{ (key.endsWith('Date'))?new Date(value).toLocaleString():value }}</span>
         </div>
       </v-card>
     </v-tooltip>

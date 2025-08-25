@@ -2,8 +2,7 @@ package com.sian.leech.util;
 
 import com.sian.leech.model.entity.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ChainUtil {
@@ -29,11 +28,13 @@ public class ChainUtil {
         }
     }
 
-    public static ActiveChain createActiveChain(String title, String symbol,String info, Chain chain){
+    public static ActiveChain createActiveChain(String title, String symbol,String info, Chain chain,String tags,String message){
         ActiveChain activeChain = new ActiveChain()
                 .setSymbol(symbol)
                 .setInfo(info)
                 .setStartTime(System.currentTimeMillis())
+                .setTags(tags)
+                .setMessage(message)
                 .setTitle(title);
 
         List<ChainElement> chainElementList = new ArrayList<>(chain.getElementList());
@@ -76,5 +77,12 @@ public class ChainUtil {
             return true;
         }
         return false;
+    }
+
+    public static Set<String> getTagList(ActiveChain activeChain){
+        if (activeChain.getTags()== null){
+            return new HashSet<String>();
+        }
+        return Arrays.stream(activeChain.getTags().split("[,;]")).map(String::trim).collect(Collectors.toSet());
     }
 }

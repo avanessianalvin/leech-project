@@ -1,8 +1,8 @@
 <template>
   Dashboard
   <manual-feed/>
-  <active-chain-table :item-list="activeChainStore.activeChainActiveListSorted" title="Active List" @remove="remove"/>
-  <active-chain-table :item-list="activeChainStore.activeChainConfirmedListSorted" title="Confirmed" @remove="remove"/>
+  <active-chain-table :item-list="activeChainStore.activeChainActiveListSorted" title="Active List" @remove="remove" @reset="reset"/>
+  <active-chain-table :item-list="activeChainStore.activeChainConfirmedListSorted" title="Confirmed" @remove="remove" @reset="reset"/>
 </template>
 
 

@@ -22,9 +22,6 @@ public class ChainManager {
     private ActiveChainService activeChainService;
 
     @Autowired
-    private MessageElementService messageElementService;
-
-    @Autowired
     private TelegramService telegramService;
 
     public void newMessage(MessageElement messageElement){
@@ -34,7 +31,8 @@ public class ChainManager {
         for (Chain chain : chainList) {
             if (chain.getElementList().get(0).getCode().equals(messageElement.getCode())){
                 if (chain.getSymbols() != null && chain.getSymbols().contains(messageElement.getSymbol())){
-                    ActiveChain activeChain = ChainUtil.createActiveChain(chain.getTitle(), messageElement.getSymbol(), "no info", chain);
+                    ActiveChain activeChain = ChainUtil.createActiveChain(chain.getTitle(), messageElement.getSymbol(), "no info", chain,chain.getTelegramTags(),chain.getMessage());
+                    activeChain.setActive(true);
                     activeChainService.save(activeChain);
                 }
             }
@@ -51,6 +49,7 @@ public class ChainManager {
         // check confirmation
         for (ActiveChain activeChain : activeChainList) {
             boolean confirmation = ChainUtil.checkConfirmation(activeChain);
+            if (confirmation)activeChain.setActive(false);
             activeChainService.save(activeChain);
 
             if (confirmation)telegramService.sendTelegramMessage(activeChain);

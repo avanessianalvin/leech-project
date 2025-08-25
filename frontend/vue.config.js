@@ -1,4 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
+const webpack = require('webpack')
+
 module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
@@ -7,8 +9,14 @@ module.exports = defineConfig({
       '/api': {
         target: 'http://localhost:8080', // backend server
         changeOrigin: true,
-        //pathRewrite: { '^/api': '' } // optional, removes /api prefix
       }
     }
+  },
+  configureWebpack: {
+    plugins: [
+      new webpack.DefinePlugin({
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false'
+      })
+    ]
   }
 })

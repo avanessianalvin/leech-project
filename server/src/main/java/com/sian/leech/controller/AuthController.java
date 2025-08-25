@@ -61,8 +61,10 @@ public class AuthController {
         return ResponseEntity.ok(new LoginResponse(token));
     }
 
-
-
+    @PostMapping("logout")
+    public ResponseEntity<?> lobout(@RequestBody LoginResponse loginResponse){
+        return ResponseEntity.ok("");
+    }
 
     @Bean
     public AuthenticationManager authManager(HttpSecurity http, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService)

@@ -20,10 +20,13 @@
 </template>
 
 <script>
+import {useAuthStore} from "@/stores/auth";
+
 export default {
+
   methods: {
     logout() {
-      console.log('Logout clicked')
+      useAuthStore().logout()
     },
     goProfile() {
       console.log('Go to profile')

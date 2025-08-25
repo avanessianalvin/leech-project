@@ -1,6 +1,6 @@
 <template>
-  <v-container class="d-flex align-center justify-center fill-height">
-    <v-card class="pa-6" min-width="400" elevation="8">
+  <v-container class="">
+    <v-card class="pa-6 pa-6 rounded-xl elevation-3" min-width="400" elevation="8" color="blue-lighten-4" >
       <v-card-title class="text-h6 text-center">Login</v-card-title>
 
       <v-card-text>
@@ -28,6 +28,7 @@
 
       <v-card-actions class="d-flex flex-column">
         <v-btn
+            variant="outlined"
             color="primary"
             class="w-100"
             :disabled="!valid"

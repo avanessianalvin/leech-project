@@ -29,4 +29,8 @@ public class Chain {
     @Column(columnDefinition = "CHARACTER VARYING(32)")
     String description;
     boolean enabled;
+    @Column(columnDefinition = "CHARACTER VARYING(64)")
+    String telegramTags;
+    @Column(columnDefinition = "CHARACTER VARYING(256)")
+    String message;
 }
