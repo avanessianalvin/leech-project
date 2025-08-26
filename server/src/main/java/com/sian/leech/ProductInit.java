@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-//public class ProductInit implements ApplicationRunner {
-public class ProductInit{
+public class ProductInit implements ApplicationRunner {
+//public class ProductInit{
     @Autowired
     UserService userService;
 
