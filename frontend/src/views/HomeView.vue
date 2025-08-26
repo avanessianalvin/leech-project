@@ -7,7 +7,8 @@
         </v-col>
 
         <v-col cols="12" md="4" v-if="!authStore.isLoggedin">
-          <log-in/>
+          <log-in @toggleLogin="showLogin=!showLogin" v-if="showLogin"/>
+          <sign-up-form  @toggleLogin="showLogin=!showLogin"  v-else/>
         </v-col>
       </v-row>
 
@@ -34,14 +35,16 @@ import InfoComponent from "@/components/info/InfoComponent";
 import FooterComponent from "@/components/info/FooterComponent";
 import TechnologiesComponent from "@/components/info/TechnologiesComponent";
 import GatewayComponent from "@/components/info/GatewayComponent";
+import SignUpForm from "@/components/SignUp";
 
 
 export default {
   name: "HomeView",
-  components: {GatewayComponent, TechnologiesComponent, FooterComponent, InfoComponent, LogIn},
+  components: {SignUpForm, GatewayComponent, TechnologiesComponent, FooterComponent, InfoComponent, LogIn},
   data() {
     return {
-      authStore: useAuthStore()
+      authStore: useAuthStore(),
+      showLogin:true
     }
   },
   mounted() {

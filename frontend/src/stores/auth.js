@@ -20,6 +20,15 @@ export const useAuthStore = defineStore('auth', {
                     .then(()=>this.loggedin=true)
                     .catch(()=>this.loggedin=false)
             },
+            signup(credentials) {
+                return apiClient.post('/auth/signup', credentials)
+                    .then(res => {
+                        useNotificationStore().notify(res.data)
+                    })
+                    .catch((e) =>{
+                        useNotificationStore().notify(e.message,"error")
+                    })
+            },
             login(credentials) {
                 apiClient.post('/auth/login', credentials)
                     .then(res => {

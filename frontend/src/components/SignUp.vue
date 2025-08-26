@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="500">
     <v-card class="pa-6 pa-6 rounded-xl elevation-3" min-width="400" elevation="8" color="blue-lighten-4" >
-      <v-card-title class="text-h6 text-center">Login</v-card-title>
+      <v-card-title class="text-h6 text-center">Sign Up</v-card-title>
 
       <v-card-text>
         <v-form v-model="valid" ref="form">
@@ -21,7 +21,7 @@
               :rules="[rules.required]"
               outlined
               dense
-              @keyup.enter="onLogin"
+              @keyup.enter="onSignUP"
           />
         </v-form>
       </v-card-text>
@@ -32,9 +32,9 @@
             color="primary"
             class="w-100"
             :disabled="!valid"
-            @click="onLogin"
+            @click="onSignUP"
         >
-          Login
+          Sign Up
         </v-btn>
         <v-btn
             variant="outlined"
@@ -42,7 +42,7 @@
             class="w-100"
             @click="$emit('toggleLogin')"
         >
-          Sign up
+          Log In
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -52,7 +52,7 @@
 <script>
 import {useAuthStore} from "@/stores/auth";
 export default {
-  name: "LoginForm",
+  name: "SignUpForm",
   data() {
     return {
       username: "",
@@ -65,11 +65,11 @@ export default {
     };
   },
   methods: {
-    onLogin() {
+    onSignUP() {
       if (this.$refs.form.validate()) {
         const credentials = {username:this.username,
         password:this.password}
-        this.authStore.login(credentials)
+        this.authStore.signup(credentials).then(()=>this.$emit("toggleLogin"))
       }
     },
   },

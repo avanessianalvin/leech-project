@@ -1,6 +1,5 @@
 <template>
   <v-container>
-
     <v-card color="blue-lighten-4" class="pa-6 rounded-xl elevation-3">
       <v-card-title class="text-h5 font-weight-bold mb-4">
         Leech Feed Chain
