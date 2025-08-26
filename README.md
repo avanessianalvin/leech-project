@@ -1,10 +1,10 @@
-# Leech Feed Chain
+# Leech Chain Manager
 ### Event-Chain Manager and Messaging
 
 ---
 
 ## 📌 Overview
-**Leech Feed Chain** automates event chains by processing signals from various indicators, checking their order, and sending summarized alerts to Telegram channels.  
+**Leech Chain Manager** automates event chains by processing signals from various indicators, checking their order, and sending summarized alerts to Telegram channels.  
 This helps users make **informed stock market decisions** through real-time monitoring, detection of complex conditions, and rule-based triggers — all without manual effort.
 
 ---
@@ -63,7 +63,7 @@ POST {ip:port}/api/message/feed
 
 Implement persistence of:
 
-- Feed messages (via MyBatis).
+- Persist messages in DB (via MyBatis).
 
 - Elements, chains, and rules (per user).
 

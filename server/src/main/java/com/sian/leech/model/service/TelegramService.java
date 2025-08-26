@@ -79,8 +79,10 @@ public class TelegramService {
             ResponseEntity<String> response = restTemplate.getForEntity(new URI(url), String.class);
             System.out.println(response.getBody());
         }catch (Exception e){
-            e.printStackTrace();
-            throw new RuntimeException(e);
+            //e.printStackTrace();
+            //throw new RuntimeException(e);
+            System.out.println("Telegram message is not sent!");
+            System.out.println(e.getMessage());
         }
 
     }
