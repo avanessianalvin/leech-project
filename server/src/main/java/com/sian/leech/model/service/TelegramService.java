@@ -23,8 +23,6 @@ import java.util.stream.Collectors;
 @Service
 public class TelegramService {
 
-    public static final String TELEGRAM_BOT_TOKEN = "8121406254:AAFA1SsOpagZmCdzInAZUz7iZFl8bDYN1kg";
-    public static final String TELEGRAM_CHANNEL_CHAT_ID = "-1002957982628";
     @Autowired
     private TelegramDA telegramDA;
 

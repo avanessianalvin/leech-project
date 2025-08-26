@@ -1,5 +1,4 @@
 <template>
-Telegram
   <telegram-table/>
   <telegram-help class="mt-12"/>
 

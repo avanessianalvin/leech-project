@@ -1,35 +1,30 @@
 <template>
-  <v-row>
-    <!-- Info Component -->
-    <v-col
-        cols="12"
-        :md="!authStore.isLoggedin ? 4 : 6"
-    >
-      <info-component/>
-    </v-col>
+  <v-container fluid class="fill-height bg-container">
+    <div class="content">
+      <v-row>
+        <v-col cols="12" md="8">
+          <info-component/>
+        </v-col>
 
-    <!-- Log In (only if not logged in) -->
-    <v-col
-        cols="12"
-        md="4"
-        v-if="!authStore.isLoggedin"
-    >
-      <log-in/>
-    </v-col>
+        <v-col cols="12" md="4" v-if="!authStore.isLoggedin">
+          <log-in/>
+        </v-col>
+      </v-row>
 
-    <!-- Image -->
-    <v-col
-        cols="12"
-        :md="!authStore.isLoggedin ? 4 : 6"
-    >
-      <v-container>
-        <v-img :src="require('@/assets/img/dashboard-sample.png')"/>
-      </v-container>
-    </v-col>
-  </v-row>
+      <v-row align="baseline">
+        <v-col cols="12" md="4">
+          <gateway-component/>
+        </v-col>
+        <v-col cols="12" md="8">
+          <technologies-component/>
+        </v-col>
+      </v-row>
+      </div>
 
-  <technologies-component/>
+  </v-container>
   <footer-component/>
+
+
 </template>
 
 <script>
@@ -38,11 +33,12 @@ import {useAuthStore} from "@/stores/auth";
 import InfoComponent from "@/components/info/InfoComponent";
 import FooterComponent from "@/components/info/FooterComponent";
 import TechnologiesComponent from "@/components/info/TechnologiesComponent";
+import GatewayComponent from "@/components/info/GatewayComponent";
 
 
 export default {
   name: "HomeView",
-  components: {TechnologiesComponent, FooterComponent, InfoComponent, LogIn},
+  components: {GatewayComponent, TechnologiesComponent, FooterComponent, InfoComponent, LogIn},
   data() {
     return {
       authStore: useAuthStore()
@@ -55,5 +51,19 @@ export default {
 </script>
 
 <style scoped>
+.bg-container::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: url('@/assets/img/dashboard-sample.png') center/cover no-repeat;
+  filter: blur(2px);
+  opacity: .6;
+  z-index: 0; /* behind content */
+}
 
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
 </style>

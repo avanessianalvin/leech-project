@@ -14,7 +14,7 @@
               <span class="font-weight-bold">Backend</span>
             </div>
             <div class="text-body-2">
-              Java • Spring Boot • Hibernate • Lombok • JWT • PostgreSQL
+              Java 17 • Spring Boot • Hibernate • Lombok • JWT • PostgreSQL
             </div>
           </v-sheet>
         </v-col>

@@ -29,7 +29,7 @@ export default {
       useAuthStore().logout()
     },
     goProfile() {
-      console.log('Go to profile')
+      this.$router.push('/profile')
     }
   }
 }

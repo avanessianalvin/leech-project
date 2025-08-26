@@ -1,5 +1,5 @@
 <template>
-  <v-container class="">
+  <v-container max-width="500">
     <v-card class="pa-6 pa-6 rounded-xl elevation-3" min-width="400" elevation="8" color="blue-lighten-4" >
       <v-card-title class="text-h6 text-center">Login</v-card-title>
 

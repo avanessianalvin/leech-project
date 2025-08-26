@@ -25,7 +25,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class ProductInit implements ApplicationRunner {
+//public class ProductInit implements ApplicationRunner {
+public class ProductInit{
     @Autowired
     UserService userService;
 
@@ -73,34 +74,41 @@ public class ProductInit implements ApplicationRunner {
         return chain;
     }
 
-    @Override
+    //fake keys
+    public static final String TELEGRAM_BOT_TOKEN = "8121401234:AAFA1SsOpagZmCdzInAZUz7iZFl8bDYN1gk";
+    public static final String TELEGRAM_CHANNEL_CHAT_ID1 = "-1002957986543";
+    public static final String TELEGRAM_CHANNEL_CHAT_ID2 = "-1002957983456";
+
+
     public void run(ApplicationArguments args) throws Exception {
+        System.out.println("Optional to create some items.");
         System.out.println("Creating user ");
         createUser("user", "user");
 
-        System.out.println("Creating some elements");
+        System.out.println("Creating some elements...");
         Element cu15 = createElement("CU15", "Cross up 15 min");
         Element cd15 = createElement("CD15", "Cross down 15 min");
         Element sh15 = createElement("SH15", "Saturation high 15 min");
         Element sl15 = createElement("SL15", "Saturation low 15 min");
 
-
+        System.out.println("Creating some chains... ");
         createChain("Buy","EURUSD,XAUUSD",cu15,sh15,cu15);
         createChain("Buy","EURUSD",cd15,sl15);
 
+        System.out.println("Creating some telegram links... ");
         telegramService.save(
                 new Telegram()
                         .setTitle("Catch all")
-                        .setToken("8121406254:AAFA1SsOpagZmCdzInAZUz7iZFl8bDYN1kg")
-                        .setChatId("-1002957982628")
+                        .setToken(TELEGRAM_BOT_TOKEN)
+                        .setChatId(TELEGRAM_CHANNEL_CHAT_ID1)
                         .setTags("EURUSD;XAUUSD")
                         .setEnabled(true));
 
         telegramService.save(
                 new Telegram()
                         .setTitle("Eurusd only")
-                        .setToken("8121406254:AAFA1SsOpagZmCdzInAZUz7iZFl8bDYN1kg")
-                        .setChatId("-1003033553502")
+                        .setToken("TELEGRAM_BOT_TOKEN")
+                        .setChatId(TELEGRAM_CHANNEL_CHAT_ID2)
                         .setTags("EURUSD")
                         .setEnabled(true));
 

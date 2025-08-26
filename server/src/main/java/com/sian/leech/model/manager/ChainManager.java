@@ -26,7 +26,7 @@ public class ChainManager {
 
     public void newMessage(MessageElement messageElement){
         // new chains
-        List<Chain> chainList = chainService.getAll();
+        List<Chain> chainList = chainService.getAll().stream().filter(Chain::isEnabled).toList();
 
         for (Chain chain : chainList) {
             if (chain.getElementList().get(0).getCode().equals(messageElement.getCode())){

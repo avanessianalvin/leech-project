@@ -21,6 +21,7 @@ public class MessageElementController {
 
     @PostMapping("/feed")
     public ResponseEntity<MessageElement> feed(@RequestBody MessageElement messageElement){
+        System.out.println("New message: "+messageElement);
         messageElement.setReceivedDate(System.currentTimeMillis());
         chainManager.newMessage(messageElement);
         return ResponseEntity.ok(messageElement);
