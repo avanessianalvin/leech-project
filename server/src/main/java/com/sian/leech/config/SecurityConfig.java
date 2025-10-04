@@ -36,18 +36,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/",                 // root
-                                "/index.html",
-                                "/favicon.ico",
-                                "/assets/**",
-                                "/css/**",
-                                "/js/**"
-                        ).permitAll()
-
+                        // 1️⃣ Permit only specific API paths first
                         .requestMatchers("/api/auth/**", "/api/message/**").permitAll()
-
-                        .anyRequest().authenticated()
+                        // 2️⃣ Authenticate all other /api paths
+                        .requestMatchers("/api/**").authenticated()
+                        // 3️⃣ Permit all other requests (frontend, static pages)
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -56,7 +50,6 @@ public class SecurityConfig {
 
         return http.build();
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
