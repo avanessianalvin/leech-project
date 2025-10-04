@@ -96,7 +96,7 @@ Implement persistence of:
 - mvn clean install
 - mvn spring-boot:run
 
-#### frontend: (/frontend)
+#### frontend: (/frontend) - FOR DEVELOPING ONLY
 - npm install
 - npm run serve.  
   (http://localhost:3000/)
