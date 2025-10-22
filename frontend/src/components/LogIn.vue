@@ -55,8 +55,8 @@ export default {
   name: "LoginForm",
   data() {
     return {
-      username: "",
-      password: "",
+      username: "user",
+      password: "user",
       valid: false,
       rules: {
         required: (value) => !!value || "Required.",

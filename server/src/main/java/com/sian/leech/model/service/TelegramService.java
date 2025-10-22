@@ -42,7 +42,6 @@ public class TelegramService {
         return telegramDA.findAll();
     }
     public void sendTelegramMessage(ActiveChain activeChain){
-        System.out.println("Telegram message");
         Set<String> tagSet = ChainUtil.getTagList(activeChain);
         Set<Telegram> telegramSet = telegramDA.findAll().stream().filter(Telegram::isEnabled).collect(Collectors.toSet());
         Set<Telegram> sendSet = new HashSet<>();
@@ -77,6 +76,7 @@ public class TelegramService {
                     URLEncoder.encode(message, StandardCharsets.UTF_8)
             );
             ResponseEntity<String> response = restTemplate.getForEntity(new URI(url), String.class);
+            System.out.println("Telegram message is sent successfully");
             System.out.println(response.getBody());
         }catch (Exception e){
             //e.printStackTrace();

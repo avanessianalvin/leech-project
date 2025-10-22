@@ -20,7 +20,7 @@ public class Chain {
     @Column(columnDefinition = "CHARACTER VARYING(16)")
     String title;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
-            @JoinColumn(name = "FK")
+    @JoinColumn(name = "FK")
     List<ChainElement> elementList;
     @Column(columnDefinition = "CHARACTER VARYING")
     String symbols;

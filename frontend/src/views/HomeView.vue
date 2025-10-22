@@ -8,7 +8,7 @@
 
         <v-col cols="12" md="4" v-if="!authStore.isLoggedin">
           <log-in @toggleLogin="showLogin=!showLogin" v-if="showLogin"/>
-          <sign-up-form  @toggleLogin="showLogin=!showLogin"  v-else/>
+          <sign-up-form  @toggleLogin="showLogin=!showLogin" v-else/>
         </v-col>
       </v-row>
 

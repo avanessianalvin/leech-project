@@ -1,6 +1,9 @@
 server:
   port: 8080
 
+props:
+  chain-auto-remove-count:0
+
 spring:
   application:
     name: leech

@@ -3,6 +3,7 @@ package com.sian.leech.model.service;
 import com.sian.leech.model.entity.ActiveChain;
 import com.sian.leech.model.repository.ActiveChainDA;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,9 +14,23 @@ import java.util.List;
 @Service
 public class ActiveChainService {
     @Autowired
-    ActiveChainDA activeChainDA;
+    private ActiveChainDA activeChainDA;
+
+    @Value("${props.chain-auto-remove-count}")
+    private int chainAutoRemoveCount;
+
+
     public void save(ActiveChain activeChain){
         activeChainDA.save(activeChain);
+        if (chainAutoRemoveCount>0)
+            removeAllExceptRecent(chainAutoRemoveCount);
+    }
+
+    public void removeAllExceptRecent(int count){
+        List<ActiveChain> confirmedExpected = getConfirmed(count);
+        List<ActiveChain> all = getAll();
+        all.removeAll(confirmedExpected);
+        all.stream().filter(a->a.getConfirmTime()>0).forEach(this::remove);
     }
 
     public void remove(ActiveChain activeChain){

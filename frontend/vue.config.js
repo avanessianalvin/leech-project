@@ -3,17 +3,17 @@ const webpack = require('webpack')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-/*  devServer: {
-    port: 3000, // your frontend port
+ devServer: {
+    port: 3000,
     proxy: {
       '/api': {
         target: 'http://localhost:8080', // backend server
         changeOrigin: true,
       }
     }
-  },*/
+  },
   publicPath: './',
-
+  outputDir:'../server/src/main/resources/static',
   configureWebpack: {
     plugins: [
       new webpack.DefinePlugin({
