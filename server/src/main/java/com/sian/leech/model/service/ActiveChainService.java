@@ -16,7 +16,7 @@ public class ActiveChainService {
     @Autowired
     private ActiveChainDA activeChainDA;
 
-    @Value("${props.chain-auto-remove-count}")
+    @Value("${props.chain-auto-remove-count:0}")
     private int chainAutoRemoveCount;
 
 
