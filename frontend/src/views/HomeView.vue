@@ -1,6 +1,24 @@
 <template>
   <v-container fluid class="fill-height bg-container">
     <div class="content">
+
+      <v-row>
+        <v-btn variant="plain" color="black" @click="showVideo=!showVideo"><v-icon icon="mdi-video" size="32"/> watch demo video...</v-btn>
+        <v-responsive v-if="showVideo">
+          <video
+              controls
+              autoplay
+              muted
+              loop
+              playsinline
+              class="w-100 h-100"
+          >
+            <source src="@/assets/video/leech-demo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </v-responsive>
+      </v-row>
+
       <v-row>
         <v-col cols="12" md="8">
           <info-component/>
@@ -8,9 +26,11 @@
 
         <v-col cols="12" md="4" v-if="!authStore.isLoggedin">
           <log-in @toggleLogin="showLogin=!showLogin" v-if="showLogin"/>
-          <sign-up-form  @toggleLogin="showLogin=!showLogin" v-else/>
+          <sign-up-form @toggleLogin="showLogin=!showLogin" v-else/>
         </v-col>
       </v-row>
+
+
 
       <v-row align="baseline">
         <v-col cols="12" md="4">
@@ -20,7 +40,7 @@
           <technologies-component/>
         </v-col>
       </v-row>
-      </div>
+    </div>
 
   </v-container>
   <footer-component/>
@@ -44,7 +64,8 @@ export default {
   data() {
     return {
       authStore: useAuthStore(),
-      showLogin:true
+      showLogin: true,
+      showVideo: false
     }
   },
   mounted() {
