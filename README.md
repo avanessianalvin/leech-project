@@ -7,8 +7,9 @@
 **Leech Chain Manager** automates event chains by processing signals from various indicators, checking their order, and sending summarized alerts to Telegram channels.  
 This helps users make **informed stock market decisions** through real-time monitoring, detection of complex conditions, and rule-based triggers — all without manual effort.
 
----
+![Description](frontend/src/assets/img/Feeder 1.png)
 
+---
 ## 📝 Features
 - Build **custom event chains** using flexible elements.
 - Link elements together and feed data into the system.
@@ -94,7 +95,7 @@ Implement persistence of:
 
 #### server: (/server)
 - mvn clean install
-- mvn spring-boot:run
+  - mvn spring-boot:run
 
 #### frontend: (/frontend) - FOR DEVELOPING ONLY
 - npm install
